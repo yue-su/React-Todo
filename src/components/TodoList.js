@@ -2,22 +2,31 @@
 // feel free to change this component.js into TodoList.js
 
 import React from 'react';
+import Todo from './Todo'
 
 class TodoList extends React.Component {
 
+    clearHandler = event => {
+        event.preventDefault()
+        this.props.clearTask()
+    }
+
+    removeHandler = event => {
+        event.preventDefault()
+        this.props.removeFinished()
+    }
+
     render() {
         return (
-            <div>
-                {
-                    this.props.taskList.map(item => {
-                        return (
-                          <div key={item.id}>
-                            <h3>{item.taskName}</h3>
-                          </div>
-                        )
-                    })
-               } 
-            </div>
+          <form>
+            {this.props.taskList.map((item) => {
+              return (
+                <Todo item={item} key={item.id} toggle={this.props.toggle} />
+              )
+            })}
+            <button onClick={this.clearHandler}>Clear the Task</button>
+            <button onClick={this.removeHandler}>Remove the Finished Task</button>
+          </form>
         )
     }
 

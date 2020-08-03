@@ -32,15 +32,36 @@ class App extends React.Component {
     //console.log(this.state.taskList)
   }
 
-  clearTask = () => {this.setState({taskList: initialTaskList})}
+  clearTask = () => { this.setState({ taskList: initialTaskList }) }
+  
+  toggle = (id) => {
+    this.setState({
+      taskList: this.state.taskList.map(item => {
+        if (item.id === id) {
+          return { ...item, completed: !item.completed }
+        }else {return item}
+      })
+    })
+    //console.log(this.state.taskList)
+  }
+
+  removeFinished = () => {
+    this.setState({
+      taskList: this.state.taskList.filter(item => item.completed === false? item:null )
+    })
+  }
 
   render() {
     return (
       <div>
-        <h2>Welcome to your Todo App!</h2>
-        <TodoList taskList={this.state.taskList} />
+        <h2>The Minimalism Todo App</h2>
+        <TodoList
+          taskList={this.state.taskList}
+          toggle={this.toggle}
+          clearTask={this.clearTask}
+          removeFinished={this.removeFinished}
+        />
         <TodoForm submit={this.submit} />
-        <button onClick={this.clearTask}>Clear the Task</button>
       </div>
     )
   }
