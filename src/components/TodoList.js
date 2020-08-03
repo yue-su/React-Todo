@@ -3,6 +3,8 @@
 
 import React from 'react';
 import Todo from './Todo'
+import Button from "@material-ui/core/Button"
+import Typography from "@material-ui/core/Typography"
 
 class TodoList extends React.Component {
 
@@ -19,13 +21,18 @@ class TodoList extends React.Component {
     render() {
         return (
           <form>
+            <Typography variant="h5">Task List:</Typography>
             {this.props.taskList.map((item) => {
               return (
                 <Todo item={item} key={item.id} toggle={this.props.toggle} />
               )
             })}
-            <button onClick={this.clearHandler}>Clear the Task</button>
-            <button onClick={this.removeHandler}>Remove the Finished Task</button>
+            <Button variant="contained" onClick={this.clearHandler}>
+              Clear the Task
+            </Button>
+            <Button variant="contained" onClick={this.removeHandler}>
+              Remove the Finished Task
+            </Button>
           </form>
         )
     }

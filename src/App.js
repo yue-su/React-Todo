@@ -2,6 +2,25 @@ import React from 'react';
 import TodoList from './components/TodoList'
 import TodoForm from './components/TodoForm'
 import { v4 as uuid } from 'uuid';
+import Typography from "@material-ui/core/Typography"
+import styled from 'styled-components'
+
+const StyledApp = styled.div`
+margin: 0;
+display: grid;
+grid-template-rows: auto 1fr auto;
+height: 100vh;
+
+header{text-align: center}
+footer{text-align:center}
+
+main{
+  display: grid;
+  place-items:center;
+
+}
+
+`
 
 const initialTaskList = []
 
@@ -53,16 +72,24 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
-        <h2>The Minimalism Todo App</h2>
-        <TodoList
-          taskList={this.state.taskList}
-          toggle={this.toggle}
-          clearTask={this.clearTask}
-          removeFinished={this.removeFinished}
-        />
-        <TodoForm submit={this.submit} />
-      </div>
+      <StyledApp>
+        <header>
+          <Typography variant="h3">The Minimalism Todo</Typography>
+        </header>
+        <main>
+          <div>
+          <TodoForm submit={this.submit} />
+          <TodoList
+            taskList={this.state.taskList}
+            toggle={this.toggle}
+            clearTask={this.clearTask}
+            removeFinished={this.removeFinished}
+            /></div>
+        </main>
+        <footer>
+          <Typography variant='h6'>Made by Yue</Typography>
+        </footer>
+      </StyledApp>
     )
   }
 }

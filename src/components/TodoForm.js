@@ -1,4 +1,7 @@
 import React from "react"
+import TextField from "@material-ui/core/TextField"
+import Button from "@material-ui/core/Button"
+import Typography from "@material-ui/core/Typography"
 
 class TodoForm extends React.Component {
 
@@ -26,20 +29,24 @@ class TodoForm extends React.Component {
     }
 
   render() {
-      return <div>
-          <form onSubmit={this.submitHandler}>
-              <label>
-                  <h4>Task Name:</h4>
-                  <input
-                      type="text"
-                      name='taskName'
-                      value={this.state.taskName}
-                      onChange={this.inputHandler}
-                  />
-              </label>
-              <button>Submit</button>
-        </form>
-    </div>
+      return (
+        <div>
+          <form>
+            <label>
+              <Typography variant="h5">Create New Task:</Typography>
+                      <TextField
+                          required
+                variant="outlined"
+                type="text"
+                name="taskName"
+                value={this.state.taskName}
+                onChange={this.inputHandler}
+              />
+            </label>
+            <Button onClick={this.submitHandler} variant="contained">Submit</Button>
+          </form>
+        </div>
+      )
   }
 }
 
