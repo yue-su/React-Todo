@@ -17,6 +17,16 @@ class TodoList extends React.Component {
         event.preventDefault()
         this.props.removeFinished()
     }
+  
+  saveHandler = event => {
+    event.preventDefault()
+    this.props.saveList()
+  }
+  
+  loadHandler = event => {
+    event.preventDefault()
+    this.props.loadList()
+  }
 
     render() {
         return (
@@ -32,6 +42,12 @@ class TodoList extends React.Component {
             </Button>
             <Button variant="contained" onClick={this.removeHandler}>
               Remove the Finished Task
+            </Button>
+            <Button variant="contained" onClick={this.saveHandler}>
+              Save List
+            </Button>
+            <Button variant="contained" onClick={this.loadHandler}>
+              Load List
             </Button>
           </form>
         )

@@ -70,6 +70,15 @@ class App extends React.Component {
     })
   }
 
+  saveList = () => {
+    window.localStorage.setItem('tasks', JSON.stringify(this.state.taskList))
+  }
+
+  loadList = () => {
+    this.setState({
+      taskList: JSON.parse(window.localStorage.getItem('tasks'))
+    })
+  }
   render() {
     return (
       <StyledApp>
@@ -83,7 +92,9 @@ class App extends React.Component {
             taskList={this.state.taskList}
             toggle={this.toggle}
             clearTask={this.clearTask}
-            removeFinished={this.removeFinished}
+              removeFinished={this.removeFinished}
+              saveList={this.saveList}
+              loadList={this.loadList}
             /></div>
         </main>
         <footer>
