@@ -1,6 +1,7 @@
 import React from 'react';
 import TodoList from './components/TodoList'
 import TodoForm from './components/TodoForm'
+import Searchbar from './components/Searchbar'
 import { v4 as uuid } from 'uuid';
 import Typography from "@material-ui/core/Typography"
 import styled from 'styled-components'
@@ -79,6 +80,20 @@ class App extends React.Component {
       taskList: JSON.parse(window.localStorage.getItem('tasks'))
     })
   }
+
+  search = key => {
+    this.saveList()
+    const taskfilterd = this.state.taskList.filter(item => 
+      item.taskName.includes(key) ? item : null)
+    this.setState({
+      taskList: taskfilterd
+    })
+  }
+
+  cancel = () => {
+    this.loadList()
+  }
+
   render() {
     return (
       <StyledApp>
@@ -87,18 +102,20 @@ class App extends React.Component {
         </header>
         <main>
           <div>
-          <TodoForm submit={this.submit} />
-          <TodoList
-            taskList={this.state.taskList}
-            toggle={this.toggle}
-            clearTask={this.clearTask}
+            <TodoForm submit={this.submit} />
+            <TodoList
+              taskList={this.state.taskList}
+              toggle={this.toggle}
+              clearTask={this.clearTask}
               removeFinished={this.removeFinished}
               saveList={this.saveList}
               loadList={this.loadList}
-            /></div>
+            />
+            <Searchbar search={this.search} cancel={this.cancel} />
+          </div>
         </main>
         <footer>
-          <Typography variant='h6'>Made by Yue</Typography>
+          <Typography variant="h6">Made by Yue</Typography>
         </footer>
       </StyledApp>
     )
