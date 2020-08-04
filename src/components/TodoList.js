@@ -4,7 +4,16 @@
 import React from 'react';
 import Todo from './Todo'
 import Button from "@material-ui/core/Button"
+import ButtonGroup from '@material-ui/core/ButtonGroup';
 import Typography from "@material-ui/core/Typography"
+import List from '@material-ui/core/List';
+import styled from 'styled-components'
+
+const StyledList = styled.div`
+margin-top: 20px;
+
+`
+
 
 class TodoList extends React.Component {
 
@@ -29,27 +38,30 @@ class TodoList extends React.Component {
   }
 
     render() {
-        return (
-          <form>
-            <Typography variant="h5">Task List:</Typography>
+      return (
+        <StyledList>
+          <Typography variant="h5">Task List:</Typography>
+          <List>
             {this.props.taskList.map((item) => {
               return (
                 <Todo item={item} key={item.id} toggle={this.props.toggle} />
               )
             })}
-            <Button variant="contained" onClick={this.clearHandler}>
-              Clear the Task
+          </List>
+          <ButtonGroup variant="contained">
+            <Button  onClick={this.removeHandler}>
+              Remove
             </Button>
-            <Button variant="contained" onClick={this.removeHandler}>
-              Remove the Finished Task
+            <Button onClick={this.clearHandler}>
+              Clear
             </Button>
-            <Button variant="contained" onClick={this.saveHandler}>
-              Save List
+            <Button onClick={this.saveHandler}>
+              Save
             </Button>
-            <Button variant="contained" onClick={this.loadHandler}>
-              Load List
-            </Button>
-          </form>
+            <Button onClick={this.loadHandler}>
+              Load
+            </Button></ButtonGroup>
+          </StyledList>
         )
     }
 

@@ -7,20 +7,32 @@ import Typography from "@material-ui/core/Typography"
 import styled from 'styled-components'
 
 const StyledApp = styled.div`
-margin: 0;
-display: grid;
-grid-template-rows: auto 1fr auto;
-height: 100vh;
-
-header{text-align: center}
-footer{text-align:center}
-
-main{
+  margin: 0;
   display: grid;
-  place-items:center;
+  grid-template-rows: auto 1fr auto;
+  height: 100vh;
+  background-color: #e3f6f5;
 
-}
+  header, footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #fffffe;
+  }
 
+  main {
+    display: grid;
+    place-items: center;
+    .main-card {
+      background-color: #fffffe;
+      padding: 40px;
+      border-radius:50px;
+      min-height: 450px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      align-items:center;
+    }
+  }
 `
 
 const initialTaskList = []
@@ -101,8 +113,8 @@ class App extends React.Component {
           <Typography variant="h3">The Minimalism Todo</Typography>
         </header>
         <main>
-          <div>
-            <TodoForm submit={this.submit} />
+          <div className='main-card'>
+            <Searchbar search={this.search} cancel={this.cancel} />
             <TodoList
               taskList={this.state.taskList}
               toggle={this.toggle}
@@ -111,7 +123,7 @@ class App extends React.Component {
               saveList={this.saveList}
               loadList={this.loadList}
             />
-            <Searchbar search={this.search} cancel={this.cancel} />
+            <TodoForm submit={this.submit} />
           </div>
         </main>
         <footer>

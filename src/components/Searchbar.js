@@ -1,6 +1,7 @@
 import React from 'react';
 import TextField from "@material-ui/core/TextField"
 import Button from "@material-ui/core/Button"
+import ButtonGroup from '@material-ui/core/ButtonGroup';
 
 class Searchbar extends React.Component{
 
@@ -40,8 +41,10 @@ class Searchbar extends React.Component{
                             value={this.state.input}
                             onChange={this.searchHandler}></TextField>
                     </label>
+                    <ButtonGroup variant='contained' size='small'>
                     <Button onClick={this.submitHandler}>Search</Button>
-                    <Button onClick={this.cancelHandler}>Cancel</Button>
+                        <Button onClick={this.cancelHandler}>Cancel</Button>
+                    </ButtonGroup>
             </form>
           </div>
         )
