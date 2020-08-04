@@ -13,14 +13,14 @@ text-align:center;
     margin-top: 20px;
 
     .todo--form{
-      height: 150px;
+      height: 120px;
       display:flex;
       flex-direction:column;
       align-items:center;
       justify-content:space-between;
 
       .btn{
-        width: 100px;
+        width: 120px;
       }
     }
 `
@@ -56,17 +56,17 @@ class TodoForm extends React.Component {
         <StyledForm>
           <form className="todo--form" onSubmit={this.submitHandler}>
             <label>
-              <Typography variant="h5">New Task:</Typography>
+              
               <TextField
                 variant="outlined"
                 type="text"
                 name="taskName"
-                placeholder="Water my plant"
+                placeholder="Type in a new task"
                 value={this.state.taskName}
                 onChange={this.inputHandler}
               />
             </label>
-            <Button className='btn' onClick={this.submitHandler} variant="contained">Submit</Button>
+            <Button className='btn' onClick={this.submitHandler} variant="contained">add</Button>
           </form>
         </StyledForm>
       )
