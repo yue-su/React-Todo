@@ -11,19 +11,19 @@ const StyledApp = styled.div`
   display: grid;
   grid-template-rows: auto 1fr auto;
   height: 100vh;
-  background-color: #e3f6f5;
+  background-color: #ced4da;
 
   header, footer {
     text-align: center;
     padding: 20px;
-    background-color: #fffffe;
+    background-color: #e9ecef;
   }
 
   main {
     display: grid;
     place-items: center;
     .main-card {
-      background-color: #fffffe;
+      background-color: #f8f9fa;
       padding: 40px;
       border-radius:50px;
       min-height: 450px;

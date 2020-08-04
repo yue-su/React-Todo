@@ -61,6 +61,7 @@ class TodoForm extends React.Component {
                 variant="outlined"
                 type="text"
                 name="taskName"
+                placeholder="Water my plant"
                 value={this.state.taskName}
                 onChange={this.inputHandler}
               />
