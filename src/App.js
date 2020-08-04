@@ -48,6 +48,8 @@ class App extends React.Component {
     this.state = {
       taskList: initialTaskList,
     }
+
+    this.saveList()
   }
 
   submit = (name) => {
